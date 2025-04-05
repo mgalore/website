@@ -408,76 +408,45 @@ nav ul li a:active {
 
 /* Cybersecurity Alert Section */
 #cyber-alert {
-    padding: 80px 0;
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), url('https://source.unsplash.com/random/1600x900/?hacker,cybersecurity') no-repeat center center/cover;
-    color: var(--text-color);
-    text-align: center;
+    padding: 60px 0;
     position: relative;
 }
 
-#cyber-alert::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent,
-        transparent 5px,
-        rgba(160, 160, 160, 0.03) 5px,
-        rgba(160, 160, 160, 0.03) 10px
-    );
-    pointer-events: none;
+#cyber-alert .container {
+    position: relative;
+    z-index: 2;
 }
 
-.alert-content {
-    max-width: 800px;
-    margin: 0 auto 40px;
+#cyber-alert .section-title {
+    color: white !important;
+    margin-bottom: 20px;
 }
 
 .alert-intro {
-    font-size: 1.2rem;
     margin-bottom: 30px;
+    color: white !important;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .stats-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .stat-box {
-    background-color: rgba(15, 15, 20, 0.7);
-    border-left: 4px solid var(--silver-light);
-    padding: 30px;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white !important;
+    margin-bottom: 20px;
     position: relative;
-    z-index: 2;
-    backdrop-filter: blur(5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
 }
 
-.stat-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+.stat-box .stat-number {
+    margin-bottom: 15px;
 }
 
-.stat-number {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--silver-light);
-    margin-bottom: 10px;
-    text-shadow: 0 2px 10px rgba(192, 192, 192, 0.3);
-    font-family: 'Inter', sans-serif;
-}
-
-.stat-description {
-    font-size: 1.1rem;
-    color: var(--text-color);
+.stat-box .stat-description {
+    line-height: 1.5;
 }
 
 .alert-cta {
@@ -1585,16 +1554,22 @@ p, .text, .description, .content {
 }
 
 /* Mission Section */
-<div class="our-mission">
-    <h2>Our Mission</h2>
-    <p style="color: #ffffff !important;">At Black Apex Intelligence, our mission is to uncover what others cannot find. We deliver comprehensive intelligence through meticulous reconnaissance, revealing the complete digital footprint of any target. We believe information is the ultimate advantage—those who possess it control the narrative. Our relentless pursuit of truth exposes hidden connections, forgotten traces, and deliberately concealed information that others miss entirely.</p>
-</div>
+.our-mission h2 {
+    color: #ffffff !important;
+}
 
-<!-- Approach Section -->
-<div class="our-approach">
-    <h2>Our Approach</h2>
-    <p style="color: #ffffff !important;">Our approach is methodical, thorough, and discreet. We deploy advanced OSINT techniques across both surface and deep web environments, utilizing specialized tools and proprietary methodologies to extract intelligence from seemingly unrelated sources. Our analysts examine digital artifacts through multiple vectors, constructing comprehensive profiles that reveal the complete picture—not just fragments. We operate with absolute discretion, ensuring our intelligence gathering activities remain undetected while delivering decisive results.</p>
-</div>
+.our-mission p {
+    color: #ffffff !important;
+}
+
+/* Approach Section */
+.our-approach h2 {
+    color: #ffffff !important;
+}
+
+.our-approach p {
+    color: #ffffff !important;
+}
 
 /* Intelligence Insights Articles Section */
 #intelligence-insights {
@@ -1714,5 +1689,196 @@ p, .text, .description, .content {
 
 .stat-box-link:hover .stat-box::after {
     opacity: 0.7;
+}
+
+/* Hide on scroll navbar for mobile */
+@media (max-width: 768px) {
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        background-color: rgba(0, 0, 0, 0.9); /* Ensure background is visible */
+        width: 100%;
+        border-radius: 0; /* Remove rounded corners on mobile */
+        backdrop-filter: blur(10px);
+    }
+    
+    header.nav-hidden {
+        transform: translateY(-100%);
+        box-shadow: none;
+    }
+    
+    /* Add some padding to the body to account for the fixed header */
+    body {
+        padding-top: 100px; /* Increase padding to prevent content overlap */
+    }
+    
+    /* Improve mobile navigation */
+    nav ul {
+        flex-direction: column;
+        padding: 15px 0;
+        width: 100%;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px 20px;
+        width: 100%;
+    }
+    
+    /* Fix company name position on mobile */
+    .company-name {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 0;
+        margin-bottom: 15px;
+        text-align: center;
+        z-index: 98;
+    }
+    
+    .company-name h1 {
+        font-size: 1.4rem;
+    }
+    
+    /* Adjust home section for small screens */
+    #home {
+        padding-top: 30px;
+    }
+    
+    .hero-content {
+        margin-top: 50px;
+        padding: 25px 15px;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Make text more legible */
+    p, .text, .description, .content {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    /* Adjust section spacing */
+    section {
+        padding: 40px 0;
+    }
+    
+    /* Fix stat boxes */
+    .stat-box {
+        text-align: center;
+        padding: 15px;
+    }
+    
+    /* Ensure buttons don't get cut off */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        white-space: normal;
+    }
+    
+    /* Fix intelligence matters section */
+    #cyber-alert .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .alert-intro {
+        padding: 0 15px;
+    }
+    
+    /* Add space between content sections */
+    section {
+        margin-bottom: 30px;
+        padding-top: 30px;
+    }
+}
+
+/* Global mobile layout improvements */
+@media (max-width: 768px) {
+    /* More space for content */
+    .container {
+        width: 92%;
+        padding: 0;
+    }
+    
+    /* Fix header position */
+    header {
+        top: 0;
+        margin-top: 0;
+    }
+    
+    /* Ensure company name is visible */
+    .company-name {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 0;
+        margin-bottom: 15px;
+        text-align: center;
+        z-index: 98;
+    }
+    
+    .company-name h1 {
+        font-size: 1.4rem;
+    }
+    
+    /* Adjust home section for small screens */
+    #home {
+        padding-top: 30px;
+    }
+    
+    .hero-content {
+        margin-top: 50px;
+        padding: 25px 15px;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    /* Make text more legible */
+    p, .text, .description, .content {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    
+    /* Adjust section spacing */
+    section {
+        padding: 40px 0;
+    }
+    
+    /* Fix stat boxes */
+    .stat-box {
+        text-align: center;
+        padding: 15px;
+    }
+    
+    /* Ensure buttons don't get cut off */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        white-space: normal;
+    }
 }
 

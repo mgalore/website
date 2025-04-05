@@ -13,6 +13,41 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Hide navbar on scroll for mobile
+let lastScrollTop = 0;
+const header = document.querySelector('header');
+const SCROLL_THRESHOLD = 10; // Minimum scroll amount before hiding/showing
+const MOBILE_WIDTH = 768; // Match your media query breakpoint
+
+window.addEventListener('scroll', function() {
+    // Only apply this on mobile
+    if (window.innerWidth <= MOBILE_WIDTH) {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Check if we've scrolled enough to trigger the effect
+        if (Math.abs(lastScrollTop - currentScroll) <= SCROLL_THRESHOLD) 
+            return;
+            
+        // Hide header when scrolling down, show when scrolling up
+        if (currentScroll > lastScrollTop && currentScroll > 100) {
+            // Scrolling down & past the threshold
+            header.classList.add('nav-hidden');
+        } else {
+            // Scrolling up or at the top
+            header.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
+    }
+}, { passive: true }); // Improves scroll performance
+
+// Reset header visibility when screen size changes
+window.addEventListener('resize', function() {
+    if (window.innerWidth > MOBILE_WIDTH) {
+        header.classList.remove('nav-hidden');
+    }
+});
+
 // Simple form submission handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
